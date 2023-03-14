@@ -1,3 +1,4 @@
+const {ethers}=require("ethers")
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
@@ -7,20 +8,13 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
-
-  const lockedAmount = hre.ethers.utils.parseEther("1");
-
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+  const provider= new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
+  const [deployer,seller,buyer] =await hre.ethers.getSigners()
+  const Marketplace=await hre.ethers.getContractFactory("Marketplace")
+  const marketplace= await Marketplace.deploy()
+  await marketplace.deployed()
+  console.log(`Deployed Contract Address ${marketplace.address}`)
+  console.log( await marketplace.totalCount())
 }
 
 // We recommend this pattern to be able to use async/await everywhere
