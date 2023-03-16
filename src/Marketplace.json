@@ -39,6 +39,18 @@
       },
       {
         "indexed": false,
+        "internalType": "string",
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "image",
+        "type": "string"
+      },
+      {
+        "indexed": false,
         "internalType": "address",
         "name": "seller",
         "type": "address"
@@ -147,6 +159,16 @@
         "type": "uint256"
       },
       {
+        "internalType": "string",
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "image",
+        "type": "string"
+      },
+      {
         "internalType": "address payable",
         "name": "seller",
         "type": "address"
@@ -176,6 +198,16 @@
         "internalType": "uint256",
         "name": "_stock",
         "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_category",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_image",
+        "type": "string"
       }
     ],
     "name": "sellProduct",

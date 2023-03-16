@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import {ethers} from "ethers"
 
-export default function SellProducts({marketplace,account}){
+export default function SellProducts({marketplace,account,provider}){
     const [name,setName]=useState("")
     const [description,setDescription]=useState("")
     const [image,setImage]=useState("")
@@ -11,19 +12,31 @@ export default function SellProducts({marketplace,account}){
     const onSubmit=async()=>{
       if(account==null){
         alert("Account not connected")
-        return
+        
       }
-      const transaction = await marketplace.SellProduct(name,description,price,stock,category,image)
+      else{
+        try{
+      const signer=await provider.getSigner()
+      const transaction = await marketplace.connect(signer).sellProduct(name,description,ethers.utils.parseEther(price),stock,category,image,{from:account})
       await transaction.wait()
-      alert("Product Listed")
+      console.log(transaction)
+      alert("Product Listed")}
+      catch(error){
+        alert(error)
+        console.log(error)
+      }
+      }
 
     }
     const onHandleChange=(e)=>{
       setCategory(e.target.value)
     }
     return(
-        <>  <div className="container col-6">
-        
+        <>  
+        <div>
+        <div className="container col-6 bg-light">
+            <div className="m-5 p-3">
+            <h1 className="m-4 text-center">Sell Your Product</h1>
             <form onSubmit={onSubmit}>
               <div class="row mb-3">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -84,10 +97,12 @@ export default function SellProducts({marketplace,account}){
                   </div>
                 </div>
               </fieldset>
-              
-              <button type="submit" class="btn btn-primary">Add Product</button>
+              <div className="text-center">
+              <button type="submit" class="btn btn-dark btn-lg">Add Product</button>
+              </div>
         </form>
-        
+        </div>
+        </div>
         </div>
         </>
     )

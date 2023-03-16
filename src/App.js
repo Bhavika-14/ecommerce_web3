@@ -24,7 +24,7 @@ const [kids_clothes,setKidsClothes]=useState(null)
 const [electronics,setElectronics]=useState(null)
 const [total,setTotal]=useState(null)
 
-const address="0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+const address="0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 
 
@@ -77,7 +77,7 @@ useEffect(()=>{
         <Route exact path="/" element={<Main />} />
         <Route path="/clothing/*" element={<Clothing  men_clothes={men_clothes} women_clothes={women_clothes} kids_clothes={kids_clothes} />} />
         <Route path="/electronics" element={<Electronics electronics={electronics} />} />
-        <Route path="/sellProduct" element={<SellProducts electronics={electronics} />} />
+        <Route path="/sellProduct" element={<SellProducts electronics={electronics} provider={provider} account={account} marketplace={marketplace} />} />
 
       </Routes>
       <Footer />

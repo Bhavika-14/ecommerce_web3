@@ -1,8 +1,18 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import SellProducts from "./sellProduct";
+import {ethers} from 'ethers'
 
-export default function Navbar(props){
+export default function Navbar({account,setAccount}){
+  const [buttonContent,setButtonContent]=useState("Connect")
+  
+
+  const connectHandler=async()=>{
+    const accounts= await window.ethereum.request({method:'eth_requestAccounts'})
+    const account=ethers.utils.getAddress(accounts[0])
+    setAccount(account)
+    setButtonContent(account)
+  }
     return(
         <>
           <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -36,10 +46,10 @@ export default function Navbar(props){
                   </li>
                   
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sell Your Product</a>
+                    <a class="nav-link active" aria-current="page" href="#"><Link to="/sellProduct">Sell Your Product</Link></a>
                   </li>
                   <li class="nav-item">
-                    <button class="nav-link active text-dark"><Link to="/sellProduct">Connect</Link></button>
+                    <button class="nav-link active text-dark" onClick={connectHandler}>{buttonContent}</button>
                   </li>
                   
                 </ul>
