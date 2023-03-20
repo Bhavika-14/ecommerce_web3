@@ -9,7 +9,8 @@ export default function SellProducts({marketplace,account,provider}){
     const [price,setPrice]=useState(0)
     const [category,setCategory]=useState("")
 
-    const onSubmit=async()=>{
+    const onSubmit=async(e)=>{
+      e.preventDefault()
       if(account==null){
         alert("Account not connected")
         
@@ -18,8 +19,8 @@ export default function SellProducts({marketplace,account,provider}){
         try{
       const signer=await provider.getSigner()
       const transaction = await marketplace.connect(signer).sellProduct(name,description,ethers.utils.parseEther(price),stock,category,image,{from:account})
-      await transaction.wait()
-      console.log(transaction)
+      const receipt=await transaction.wait()
+      console.log(receipt)
       alert("Product Listed")}
       catch(error){
         alert(error)

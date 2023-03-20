@@ -17,7 +17,7 @@ export default function Navbar({account,setAccount}){
         <>
           <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
             <div className="container-fluid">
-              <a className="navbar-brand" href="#">Marketplace</a>
+              <button className="navbar-brand"><Link to="/">Marketplace</Link></button>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

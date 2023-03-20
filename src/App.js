@@ -54,15 +54,15 @@ const loadBlockchainData=async()=>{
 
   console.log(total)
 
-  const men_clothes=items.filter((item)=>item.category===men_clothes)
-  const women_clothes=items.filter((item)=>item.category===women_clothes)
-  const kids_clothes=items.filter((item)=>item.category===kids_clothes)
-  const electronics=items.filter((item)=>item.category===electronics)
+  const men_clothes_list=items.filter((item)=>item.category===men_clothes)
+  const women_clothes_list=items.filter((item)=>item.category===women_clothes)
+  const kids_clothes_list=items.filter((item)=>item.category===kids_clothes)
+  const electronics_list=items.filter((item)=>item.category===electronics)
 
-  setMenClothes(men_clothes)
-  setWomenClothes(women_clothes)
-  setKidsClothes(kids_clothes)
-  setElectronics(electronics)
+  setMenClothes(men_clothes_list)
+  setWomenClothes(women_clothes_list)
+  setKidsClothes(kids_clothes_list)
+  setElectronics(electronics_list)
 
 
 }
