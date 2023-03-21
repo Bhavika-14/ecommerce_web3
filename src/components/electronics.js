@@ -1,10 +1,11 @@
 import React from "react";
 import Product from "./product"
+import ShowProducts from "./show_product";
 
-export default function Electronics(){
+export default function Electronics({electronics}){
     return(
         <>
-        <Product />
+        <ShowProducts title ={"Electronics"} products={electronics} />
         </>
     )
 }

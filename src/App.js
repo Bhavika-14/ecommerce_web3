@@ -18,10 +18,10 @@ function App() {
 const [provider,setProvider]=useState(null)
 const [marketplace,setMarketplace]=useState(null)
 const [account,setAccount]=useState(null)
-const [men_clothes,setMenClothes]=useState(null)
-const [women_clothes,setWomenClothes]=useState(null)
-const [kids_clothes,setKidsClothes]=useState(null)
-const [electronics,setElectronics]=useState(null)
+const [men_clothes,setMenClothes]=useState([])
+const [women_clothes,setWomenClothes]=useState([])
+const [kids_clothes,setKidsClothes]=useState([])
+const [electronics,setElectronics]=useState([])
 const [total,setTotal]=useState(null)
 
 const address="0x5FbDB2315678afecb367f032d93F642f64180aa3";
@@ -49,21 +49,41 @@ const loadBlockchainData=async()=>{
   
   for(let i=1;i<=total;i++){
     const item=await marketplace.products(i)
-    items.push(item)
+    
+    items.push({name:item.product_name,
+                price:item.product_price,
+                stock:item.product_stock,
+                category:item.category,
+                description:item.product_description,
+                seller:item.seller,
+                id:item.product_id,
+                image:item.image
+              })
+    console.log(
+      {name:item.product_name,
+        price:item.product_price,
+        stock:item.product_stock,
+        category:item.category,
+        description:item.product_description,
+        seller:item.seller,
+        id:item.product_id,
+        image:item.image
+      }
+    )
   }
 
   console.log(total)
 
-  const men_clothes_list=items.filter((item)=>item.category===men_clothes)
-  const women_clothes_list=items.filter((item)=>item.category===women_clothes)
-  const kids_clothes_list=items.filter((item)=>item.category===kids_clothes)
-  const electronics_list=items.filter((item)=>item.category===electronics)
+  const men_clothes_list=items.filter((item)=>item.category==="men_clothes")
+  const women_clothes_list=items.filter((item)=>item.category==="women_clothes")
+  const kids_clothes_list=items.filter((item)=>item.category==="kids_clothes")
+  const electronics_list=items.filter((item)=>item.category==="electronics")
 
   setMenClothes(men_clothes_list)
   setWomenClothes(women_clothes_list)
   setKidsClothes(kids_clothes_list)
   setElectronics(electronics_list)
-
+  console.log(electronics_list)
 
 }
 

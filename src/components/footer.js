@@ -4,7 +4,7 @@ let currentYear=new Date().getFullYear()
 export default function Footer(){
     return(
         <>
-          <div className="bg-dark text-center p-2">
+          <div className="bg-dark text-center p-2 bottom-fixed">
             <p className="text-light">
           © {currentYear}
           </p>
