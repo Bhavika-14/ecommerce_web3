@@ -1,13 +1,19 @@
 import React,{useState} from "react"
 import {ethers} from "ethers"
-export default function Product_desc({product_desc,setToggle}){
+export default function Product_desc({product_desc,setToggle,account,marketplace,provider}){
     let [stock,setStock]=useState(false)
+    let [purchased,setPurchased]=useState(false)
 
     const buyHandle=async()=>{
         if(!product_desc.stock){
             setStock(true)
             return
         }
+        const signer=await provider.getSigner()
+        let transaction =await marketplace.connect(signer).buyProduct(product_desc.id,{value:product_desc.price})
+        let receipt = await transaction.wait()
+        console.log(receipt)
+        setPurchased(true)
     }
     return(
         <>
@@ -44,7 +50,8 @@ export default function Product_desc({product_desc,setToggle}){
                                 <p className="card-text" style={{color:"red"}}>Out of Stock</p>
                                 }
 
-                                <button className="btn px-5 btn-lg btn-dark my-2" onClick={buyHandle}>Buy</button>
+                                {!purchased && <button className="btn px-5 btn-lg btn-dark my-2" onClick={buyHandle}>Buy</button>}
+                                {purchased && <p>Purchased</p>}
                                 
 
                             </div>

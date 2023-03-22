@@ -96,8 +96,8 @@ useEffect(()=>{
       <Navbar  account={account} setAccount={setAccount} marketplace={marketplace} />
       <Routes>
         <Route exact path="/" element={<Main />} />
-        <Route path="/clothing/*" element={<Clothing  men_clothes={men_clothes} women_clothes={women_clothes} kids_clothes={kids_clothes} />} />
-        <Route path="/electronics" element={<Electronics electronics={electronics} marketplace={marketplace} />} />
+        <Route path="/clothing/*" element={<Clothing  men_clothes={men_clothes} women_clothes={women_clothes} kids_clothes={kids_clothes} />} provider={provider} account={account} marketplace={marketplace} />
+        <Route path="/electronics" element={<Electronics electronics={electronics} provider={provider} account={account} marketplace={marketplace} />} />
         <Route path="/sellProduct" element={<SellProducts electronics={electronics} provider={provider} account={account} marketplace={marketplace} />} />
         <Route path="/product" element={<Product_desc />} />
       </Routes>

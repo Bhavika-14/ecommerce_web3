@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import Product from './product.js'
 import Product_desc from "./product_desc.js"
 
-export default function ShowProducts({title,products,marketplace}){
+export default function ShowProducts({title,products,account,marketplace,provider}){
     let [toggle,setToggle]=useState(false)
     let [product_desc,setProduct_desc]=useState()
     if(products){
@@ -26,7 +26,7 @@ export default function ShowProducts({title,products,marketplace}){
             </div>
             </div>
             </div>
-            {toggle && <Product_desc product_desc={product_desc} setToggle={setToggle} />}
+            {toggle && <Product_desc product_desc={product_desc} setToggle={setToggle} account={account} marketplace={marketplace} provider={provider} />}
             </>
         
     )

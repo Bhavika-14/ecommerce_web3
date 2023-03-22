@@ -1,4 +1,5 @@
 # E-Commerce Web3 Platform
+  This is a web3 ecommerce portal. The person who wants to sell products through this portal can easily list their product on the portal by filling some required product details. Products can be easily purchased by paying in ethers.
 
 ## Technology Stack & Tools
 
