@@ -9,6 +9,7 @@ import {ethers} from "ethers";
 import ShowProducts from "./components/show_product";
 import Marketplace from './Marketplace.json'
 import SellProducts from "./components/sellProduct";
+import Product_desc from "./components/product_desc.js"
 
 
 
@@ -96,9 +97,9 @@ useEffect(()=>{
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route path="/clothing/*" element={<Clothing  men_clothes={men_clothes} women_clothes={women_clothes} kids_clothes={kids_clothes} />} />
-        <Route path="/electronics" element={<Electronics electronics={electronics} />} />
+        <Route path="/electronics" element={<Electronics electronics={electronics} marketplace={marketplace} />} />
         <Route path="/sellProduct" element={<SellProducts electronics={electronics} provider={provider} account={account} marketplace={marketplace} />} />
-
+        <Route path="/product" element={<Product_desc />} />
       </Routes>
       <Footer />
     </>
