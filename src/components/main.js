@@ -47,6 +47,7 @@ export default function Main(){
                               
                             </div>
                     </div>
+                    
                    </div>
                    <div className="col-3 mb-2">
                     <div class="card">
